@@ -1,10 +1,12 @@
 name: 每月更新机场数据
 
-# 每月1号凌晨2点（UTC）自动运行 = 北京时间10点
 on:
   schedule:
     - cron: '0 2 1 * *'  # 每月1号 02:00 UTC
   workflow_dispatch:  # 支持手动触发
+
+permissions:
+  contents: write  # 允许推送更新
 
 jobs:
   update-airport-data:
