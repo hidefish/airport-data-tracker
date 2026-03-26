@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 50 全球机场客流数据看板</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
+            background: #f8f9fa;
+            padding: 2rem;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .data-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .data-badge.auto {
+            background: rgba(34, 197, 94, 0.3);
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        .metric-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .metric-value.positive { color: #22c55e; }
+        .metric-value.neutral { color: #3b82f6; }
+        
+        .controls {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .control-group label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+        select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 140px;
+        }
+        select:hover {
+            border-color: #3b82f6;
+        }
+        select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 700px;
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 13px;
+            color: #666;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f4f6;
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            h1 { font-size: 24px; }
+            .metrics { grid-template-columns: 1fr; }
+            .controls { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛫 Top 50 全球机场客流数据看板</h1>
+            <div class="subtitle">
+                <span>三年趋势追踪</span>
+                <span class="data-badge auto">⚡ 每月1号自动更新</span>
+                <span class="data-badge" id="lastUpdate">加载中...</span>
+            </div>
+        </div>
+
+        <div id="loadingState" class="loading">
+            <div class="loading-spinner"></div>
+            <p>正在加载最新数据...</p>
+        </div>
+
+        <div id="mainContent" style="display: none;">
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-label">📊 总客运量</div>
+                    <div class="metric-value neutral" id="totalPax">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">📈 平均增长率</div>
+                    <div class="metric-value positive" id="avgGrowth">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">🇨🇳 中国机场数量</div>
+                    <div class="metric-value neutral" id="chinaPorts">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">🏆 Top 10 占比</div>
+                    <div class="metric-value neutral" id="top10Share">-</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label>📅 年份</label>
+                    <select id="yearSelect">
+                        <option value="2024">2024年</option>
+                        <option value="2025">2025年</option>
+                        <option value="2026" selected>2026年</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>📊 视图</label>
+                    <select id="viewMode">
+                        <option value="bar">柱状图</option>
+                        <option value="bubble">气泡图（增长率）</option>
+                        <option value="rank">排名变化</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>🌍 区域</label>
+                    <select id="regionFilter">
+                        <option value="all">全部</option>
+                        <option value="asia">亚洲</option>
+                        <option value="americas">美洲</option>
+                        <option value="europe">欧洲</option>
+                        <option value="china">中国</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>🔢 显示</label>
+                    <select id="displayCount">
+                        <option value="10">Top 10</option>
+                        <option value="20">Top 20</option>
+                        <option value="30">Top 30</option>
+                        <option value="50">Top 50</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-wrapper">
+                    <canvas id="mainChart"></canvas>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #378ADD;"></span>
+                        <span>亚洲</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #639922;"></span>
+                        <span>美洲</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #BA7517;"></span>
+                        <span>欧洲</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #D85A30;"></span>
+                        <span>中东</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #7F77DD;"></span>
+                        <span>中国</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 配置
+        const DATA_SOURCE = {
+            github: 'https://raw.githubusercontent.com/hidefish/airport-data-tracker/main/data/airports_data.json',
+            fallback: './airports_data.json'
+        };
+
+        const regionColors = {
+            'asia': '#378ADD',
+            'americas': '#639922',
+            'europe': '#BA7517',
+            'middle-east': '#D85A30',
+            'china': '#7F77DD'
+        };
+
+        let allData = null;
+        let chart = null;
+        let currentYear = '2026';
+        let currentView = 'bar';
+        let currentRegion = 'all';
+        let currentCount = 10;
+
+        async function loadData() {
+            try {
+                let response = await fetch(DATA_SOURCE.github);
+                if (!response.ok) {
+                    response = await fetch(DATA_SOURCE.fallback);
+                }
+                
+                const data = await response.json();
+                allData = data;
+                
+                if (data.metadata) {
+                    const updateTime = new Date(data.metadata.generated_at).toLocaleString('zh-CN');
+                    document.getElementById('lastUpdate').textContent = `更新: ${updateTime}`;
+                }
+                
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                
+                updateMetrics();
+                updateChart();
+                
+            } catch (error) {
+                console.error('数据加载失败:', error);
+                document.getElementById('loadingState').innerHTML = '<p style="color: #dc2626;">数据加载失败，请稍后重试</p>';
+            }
+        }
+
+        function getCurrentData() {
+            if (!allData || !allData.yearly_data) return [];
+            return allData.yearly_data[currentYear] || [];
+        }
+
+        function updateMetrics() {
+            const data = getCurrentData();
+            const total = data.reduce((sum, a) => sum + (a.pax || 0), 0);
+            const avgGrowth = data.reduce((sum, a) => sum + (a.growth || 0), 0) / data.length;
+            const chinaCount = data.filter(a => a.region === 'china').length;
+            const top10Total = data.slice(0, 10).reduce((sum, a) => sum + (a.pax || 0), 0);
+            const top10Share = total > 0 ? (top10Total / total * 100) : 0;
+
+            document.getElementById('totalPax').textContent = `${(total / 1000).toFixed(2)}B`;
+            document.getElementById('avgGrowth').textContent = `+${avgGrowth.toFixed(1)}%`;
+            document.getElementById('chinaPorts').textContent = chinaCount;
+            document.getElementById('top10Share').textContent = `${top10Share.toFixed(1)}%`;
+        }
+
+        function filterData() {
+            let data = getCurrentData();
+            if (currentRegion !== 'all') {
+                data = data.filter(a => a.region === currentRegion);
+            }
+            return data.slice(0, currentCount);
+        }
+
+        function updateChart() {
+            const data = filterData();
+            
+            if (chart) chart.destroy();
+            
+            const ctx = document.getElementById('mainChart');
+            
+            if (currentView === 'bar') {
+                chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.map(a => a.name),
+                        datasets: [{
+                            label: '客运量 (百万人次)',
+                            data: data.map(a => a.pax),
+                            backgroundColor: data.map(a => regionColors[a.region] || '#888')
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: ctx => `${ctx.parsed.x.toFixed(1)}M 人次 | 增长 ${data[ctx.dataIndex].growth?.toFixed(1) || 'N/A'}%`
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: { display: true, text: '年客运量 (百万人次)' },
+                                grid: { color: 'rgba(0,0,0,0.05)' }
+                            },
+                            y: {
+                                ticks: { autoSkip: false }
+                            }
+                        }
+                    }
+                });
+            } else if (currentView === 'bubble') {
+                // 气泡图：气泡大小代表增长率
+                chart = new Chart(ctx, {
+                    type: 'bubble',
+                    data: {
+                        datasets: [{
+                            data: data.map((a, i) => ({
+                                x: i + 1,
+                                y: a.pax,
+                                r: Math.max(5, Math.abs(a.growth || 0) / 3), // 气泡大小 = 增长率
+                                airport: a.name,
+                                growth: a.growth || 0
+                            })),
+                            backgroundColor: data.map(a => regionColors[a.region] + '80' || '#88888880')
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: ctx => `${ctx.raw.airport}: ${ctx.raw.y.toFixed(1)}M | 增长 ${ctx.raw.growth.toFixed(1)}% (气泡大小)`
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: '气泡大小 = 增长率',
+                                font: { size: 14 }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: { display: true, text: '排名' },
+                                min: 0,
+                                max: data.length + 1
+                            },
+                            y: {
+                                title: { display: true, text: '客运量 (百万人次)' },
+                                min: 0,
+                                max: Math.max(...data.map(a => a.pax || 0)) * 1.1
+                            }
+                        }
+                    }
+                });
+            } else if (currentView === 'rank') {
+                // 排名变化：对比三年数据
+                const datasets = [];
+                const years = ['2024', '2025', '2026'];
+                const colors = ['#B4B2A9', '#85B7EB', '#378ADD'];
+                
+                years.forEach((year, index) => {
+                    const yearData = allData.yearly_data[year] || [];
+                    const filteredYearData = currentRegion === 'all' 
+                        ? yearData.slice(0, currentCount)
+                        : yearData.filter(a => a.region === currentRegion).slice(0, currentCount);
+                    
+                    datasets.push({
+                        label: `${year}年`,
+                        data: filteredYearData.map(a => ({
+                            x: a.rank,
+                            y: a.pax,
+                            airport: a.name
+                        })),
+                        backgroundColor: colors[index],
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    });
+                });
+                
+                chart = new Chart(ctx, {
+                    type: 'scatter',
+                    data: { datasets },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true, position: 'top' },
+                            tooltip: {
+                                callbacks: {
+                                    label: ctx => `#${ctx.raw.x}: ${ctx.raw.airport} (${ctx.raw.y.toFixed(1)}M)`
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: '三年排名变化趋势',
+                                font: { size: 16 }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: { display: true, text: '排名' },
+                                reverse: false,
+                                min: 0,
+                                max: currentCount + 1
+                            },
+                            y: {
+                                title: { display: true, text: '客运量 (百万人次)' }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        document.getElementById('yearSelect').addEventListener('change', e => {
+            currentYear = e.target.value;
+            updateMetrics();
+            updateChart();
+        });
+
+        document.getElementById('viewMode').addEventListener('change', e => {
+            currentView = e.target.value;
+            updateChart();
+        });
+
+        document.getElementById('regionFilter').addEventListener('change', e => {
+            currentRegion = e.target.value;
+            updateChart();
+        });
+
+        document.getElementById('displayCount').addEventListener('change', e => {
+            currentCount = parseInt(e.target.value);
+            updateChart();
+        });
+
+        loadData();
+    </script>
+</body>
+</html>

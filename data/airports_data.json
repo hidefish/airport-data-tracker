@@ -1,0 +1,1506 @@
+{
+  "metadata": {
+    "generated_at": "2026-03-26T02:23:27.271104",
+    "years": [
+      2024,
+      2025,
+      2026
+    ],
+    "data_quality": "validated",
+    "update_frequency": "monthly",
+    "next_update": "2026-04-01"
+  },
+  "yearly_data": {
+    "2024": [
+      {
+        "rank": 1,
+        "code": "ATL",
+        "name": "亚特兰大",
+        "pax": 104.7,
+        "growth": 11.2,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 2,
+        "code": "DXB",
+        "name": "迪拜",
+        "pax": 87.0,
+        "growth": 6.5,
+        "region": "middle-east",
+        "country": "AE"
+      },
+      {
+        "rank": 3,
+        "code": "DFW",
+        "name": "达拉斯",
+        "pax": 81.8,
+        "growth": 9.8,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 4,
+        "code": "LHR",
+        "name": "伦敦希思罗",
+        "pax": 79.2,
+        "growth": 28.5,
+        "region": "europe",
+        "country": "GB"
+      },
+      {
+        "rank": 5,
+        "code": "DEN",
+        "name": "丹佛",
+        "pax": 77.8,
+        "growth": 12.3,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 6,
+        "code": "ORD",
+        "name": "芝加哥",
+        "pax": 77.0,
+        "growth": 9.5,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 7,
+        "code": "IST",
+        "name": "伊斯坦布尔",
+        "pax": 76.0,
+        "growth": 18.7,
+        "region": "europe",
+        "country": "TR"
+      },
+      {
+        "rank": 8,
+        "code": "LAX",
+        "name": "洛杉矶",
+        "pax": 75.1,
+        "growth": 13.2,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 9,
+        "code": "CDG",
+        "name": "巴黎戴高乐",
+        "pax": 67.4,
+        "growth": 23.4,
+        "region": "europe",
+        "country": "FR"
+      },
+      {
+        "rank": 10,
+        "code": "DEL",
+        "name": "新德里",
+        "pax": 66.8,
+        "growth": 7.9,
+        "region": "asia",
+        "country": "IN"
+      },
+      {
+        "rank": 11,
+        "code": "HND",
+        "name": "东京羽田",
+        "pax": 64.3,
+        "growth": 48.2,
+        "region": "asia",
+        "country": "JP"
+      },
+      {
+        "rank": 12,
+        "code": "AMS",
+        "name": "阿姆斯特丹",
+        "pax": 61.8,
+        "growth": 19.4,
+        "region": "europe",
+        "country": "NL"
+      },
+      {
+        "rank": 13,
+        "code": "HKG",
+        "name": "香港",
+        "pax": 61.4,
+        "growth": 361.2,
+        "region": "asia",
+        "country": "HK"
+      },
+      {
+        "rank": 14,
+        "code": "MAD",
+        "name": "马德里",
+        "pax": 60.1,
+        "growth": 25.8,
+        "region": "europe",
+        "country": "ES"
+      },
+      {
+        "rank": 15,
+        "code": "PEK",
+        "name": "北京首都",
+        "pax": 60.0,
+        "growth": 50.1,
+        "region": "china",
+        "country": "CN"
+      },
+      {
+        "rank": 16,
+        "code": "JFK",
+        "name": "纽约肯尼迪",
+        "pax": 59.8,
+        "growth": 14.6,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 17,
+        "code": "ICN",
+        "name": "首尔仁川",
+        "pax": 56.3,
+        "growth": 126.5,
+        "region": "asia",
+        "country": "KR"
+      },
+      {
+        "rank": 18,
+        "code": "SIN",
+        "name": "新加坡樟宜",
+        "pax": 55.2,
+        "growth": 30.5,
+        "region": "asia",
+        "country": "SG"
+      },
+      {
+        "rank": 19,
+        "code": "BKK",
+        "name": "曼谷",
+        "pax": 54.7,
+        "growth": 28.8,
+        "region": "asia",
+        "country": "TH"
+      },
+      {
+        "rank": 20,
+        "code": "FRA",
+        "name": "法兰克福",
+        "pax": 54.5,
+        "growth": 17.3,
+        "region": "europe",
+        "country": "DE"
+      },
+      {
+        "rank": 21,
+        "code": "MCO",
+        "name": "奥兰多",
+        "pax": 53.8,
+        "growth": 11.4,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 22,
+        "code": "LAS",
+        "name": "拉斯维加斯",
+        "pax": 53.1,
+        "growth": 10.9,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 23,
+        "code": "CAN",
+        "name": "广州",
+        "pax": 52.4,
+        "growth": 21.3,
+        "region": "china",
+        "country": "CN"
+      },
+      {
+        "rank": 24,
+        "code": "MIA",
+        "name": "迈阿密",
+        "pax": 51.3,
+        "growth": 12.7,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 25,
+        "code": "CLT",
+        "name": "夏洛特",
+        "pax": 50.2,
+        "growth": 8.9,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 26,
+        "code": "CGK",
+        "name": "雅加达",
+        "pax": 49.9,
+        "growth": 15.4,
+        "region": "asia",
+        "country": "ID"
+      },
+      {
+        "rank": 27,
+        "code": "BCN",
+        "name": "巴塞罗那",
+        "pax": 49.6,
+        "growth": 22.1,
+        "region": "europe",
+        "country": "ES"
+      },
+      {
+        "rank": 28,
+        "code": "PHX",
+        "name": "凤凰城",
+        "pax": 48.9,
+        "growth": 9.2,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 29,
+        "code": "MUC",
+        "name": "慕尼黑",
+        "pax": 48.2,
+        "growth": 18.6,
+        "region": "europe",
+        "country": "DE"
+      },
+      {
+        "rank": 30,
+        "code": "SEA",
+        "name": "西雅图",
+        "pax": 47.5,
+        "growth": 11.8,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 31,
+        "code": "SHA",
+        "name": "上海虹桥",
+        "pax": 47.2,
+        "growth": 32.4,
+        "region": "china",
+        "country": "CN"
+      },
+      {
+        "rank": 32,
+        "code": "FCO",
+        "name": "罗马",
+        "pax": 46.7,
+        "growth": 21.5,
+        "region": "europe",
+        "country": "IT"
+      },
+      {
+        "rank": 33,
+        "code": "PVG",
+        "name": "上海浦东",
+        "pax": 45.9,
+        "growth": 42.8,
+        "region": "china",
+        "country": "CN"
+      },
+      {
+        "rank": 34,
+        "code": "MEX",
+        "name": "墨西哥城",
+        "pax": 45.5,
+        "growth": 7.3,
+        "region": "americas",
+        "country": "MX"
+      },
+      {
+        "rank": 35,
+        "code": "BOM",
+        "name": "孟买",
+        "pax": 45.2,
+        "growth": 8.1,
+        "region": "asia",
+        "country": "IN"
+      },
+      {
+        "rank": 36,
+        "code": "EWR",
+        "name": "纽瓦克",
+        "pax": 44.9,
+        "growth": 10.5,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 37,
+        "code": "LGW",
+        "name": "伦敦盖特威克",
+        "pax": 44.1,
+        "growth": 19.2,
+        "region": "europe",
+        "country": "GB"
+      },
+      {
+        "rank": 38,
+        "code": "SZX",
+        "name": "深圳",
+        "pax": 43.7,
+        "growth": 25.6,
+        "region": "china",
+        "country": "CN"
+      },
+      {
+        "rank": 39,
+        "code": "CTU",
+        "name": "成都",
+        "pax": 43.2,
+        "growth": 18.9,
+        "region": "china",
+        "country": "CN"
+      },
+      {
+        "rank": 40,
+        "code": "SFO",
+        "name": "旧金山",
+        "pax": 42.8,
+        "growth": 13.4,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 41,
+        "code": "KUL",
+        "name": "吉隆坡",
+        "pax": 42.5,
+        "growth": 27.3,
+        "region": "asia",
+        "country": "MY"
+      },
+      {
+        "rank": 42,
+        "code": "IAH",
+        "name": "休斯顿",
+        "pax": 42.1,
+        "growth": 9.7,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 43,
+        "code": "XIY",
+        "name": "西安",
+        "pax": 41.8,
+        "growth": 16.4,
+        "region": "china",
+        "country": "CN"
+      },
+      {
+        "rank": 44,
+        "code": "BOS",
+        "name": "波士顿",
+        "pax": 41.3,
+        "growth": 11.2,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 45,
+        "code": "MSP",
+        "name": "明尼阿波利斯",
+        "pax": 40.9,
+        "growth": 8.8,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 46,
+        "code": "CKG",
+        "name": "重庆",
+        "pax": 40.5,
+        "growth": 14.7,
+        "region": "china",
+        "country": "CN"
+      },
+      {
+        "rank": 47,
+        "code": "MNL",
+        "name": "马尼拉",
+        "pax": 40.2,
+        "growth": 12.3,
+        "region": "asia",
+        "country": "PH"
+      },
+      {
+        "rank": 48,
+        "code": "DTW",
+        "name": "底特律",
+        "pax": 39.8,
+        "growth": 9.4,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 49,
+        "code": "FLL",
+        "name": "劳德代尔堡",
+        "pax": 39.4,
+        "growth": 10.1,
+        "region": "americas",
+        "country": "US"
+      },
+      {
+        "rank": 50,
+        "code": "GRU",
+        "name": "圣保罗",
+        "pax": 38.9,
+        "growth": 15.8,
+        "region": "americas",
+        "country": "BR"
+      }
+    ],
+    "2025": [
+      {
+        "rank": 1,
+        "code": "ATL",
+        "name": "亚特兰大",
+        "pax": 111.0,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 2,
+        "code": "DXB",
+        "name": "迪拜",
+        "pax": 92.2,
+        "growth": 6.0,
+        "region": "middle-east",
+        "country": "AE",
+        "estimated": true
+      },
+      {
+        "rank": 3,
+        "code": "DFW",
+        "name": "达拉斯",
+        "pax": 86.7,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 4,
+        "code": "LHR",
+        "name": "伦敦希思罗",
+        "pax": 84.0,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "GB",
+        "estimated": true
+      },
+      {
+        "rank": 5,
+        "code": "DEN",
+        "name": "丹佛",
+        "pax": 82.5,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 6,
+        "code": "ORD",
+        "name": "芝加哥",
+        "pax": 81.6,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 7,
+        "code": "IST",
+        "name": "伊斯坦布尔",
+        "pax": 80.6,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "TR",
+        "estimated": true
+      },
+      {
+        "rank": 8,
+        "code": "LAX",
+        "name": "洛杉矶",
+        "pax": 79.6,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 9,
+        "code": "CDG",
+        "name": "巴黎戴高乐",
+        "pax": 71.4,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "FR",
+        "estimated": true
+      },
+      {
+        "rank": 10,
+        "code": "DEL",
+        "name": "新德里",
+        "pax": 70.8,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "IN",
+        "estimated": true
+      },
+      {
+        "rank": 11,
+        "code": "HND",
+        "name": "东京羽田",
+        "pax": 68.2,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "JP",
+        "estimated": true
+      },
+      {
+        "rank": 12,
+        "code": "AMS",
+        "name": "阿姆斯特丹",
+        "pax": 65.5,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "NL",
+        "estimated": true
+      },
+      {
+        "rank": 13,
+        "code": "HKG",
+        "name": "香港",
+        "pax": 65.1,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "HK",
+        "estimated": true
+      },
+      {
+        "rank": 14,
+        "code": "MAD",
+        "name": "马德里",
+        "pax": 63.7,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "ES",
+        "estimated": true
+      },
+      {
+        "rank": 15,
+        "code": "PEK",
+        "name": "北京首都",
+        "pax": 63.6,
+        "growth": 6.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 16,
+        "code": "JFK",
+        "name": "纽约肯尼迪",
+        "pax": 63.4,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 17,
+        "code": "ICN",
+        "name": "首尔仁川",
+        "pax": 59.7,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "KR",
+        "estimated": true
+      },
+      {
+        "rank": 18,
+        "code": "SIN",
+        "name": "新加坡樟宜",
+        "pax": 58.5,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "SG",
+        "estimated": true
+      },
+      {
+        "rank": 19,
+        "code": "BKK",
+        "name": "曼谷",
+        "pax": 58.0,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "TH",
+        "estimated": true
+      },
+      {
+        "rank": 20,
+        "code": "FRA",
+        "name": "法兰克福",
+        "pax": 57.8,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "DE",
+        "estimated": true
+      },
+      {
+        "rank": 21,
+        "code": "MCO",
+        "name": "奥兰多",
+        "pax": 57.0,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 22,
+        "code": "LAS",
+        "name": "拉斯维加斯",
+        "pax": 56.3,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 23,
+        "code": "CAN",
+        "name": "广州",
+        "pax": 55.5,
+        "growth": 6.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 24,
+        "code": "MIA",
+        "name": "迈阿密",
+        "pax": 54.4,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 25,
+        "code": "CLT",
+        "name": "夏洛特",
+        "pax": 53.2,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 26,
+        "code": "CGK",
+        "name": "雅加达",
+        "pax": 52.9,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "ID",
+        "estimated": true
+      },
+      {
+        "rank": 27,
+        "code": "BCN",
+        "name": "巴塞罗那",
+        "pax": 52.6,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "ES",
+        "estimated": true
+      },
+      {
+        "rank": 28,
+        "code": "PHX",
+        "name": "凤凰城",
+        "pax": 51.8,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 29,
+        "code": "MUC",
+        "name": "慕尼黑",
+        "pax": 51.1,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "DE",
+        "estimated": true
+      },
+      {
+        "rank": 30,
+        "code": "SEA",
+        "name": "西雅图",
+        "pax": 50.4,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 31,
+        "code": "SHA",
+        "name": "上海虹桥",
+        "pax": 50.0,
+        "growth": 6.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 32,
+        "code": "FCO",
+        "name": "罗马",
+        "pax": 49.5,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "IT",
+        "estimated": true
+      },
+      {
+        "rank": 33,
+        "code": "PVG",
+        "name": "上海浦东",
+        "pax": 48.7,
+        "growth": 6.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 34,
+        "code": "MEX",
+        "name": "墨西哥城",
+        "pax": 48.2,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "MX",
+        "estimated": true
+      },
+      {
+        "rank": 35,
+        "code": "BOM",
+        "name": "孟买",
+        "pax": 47.9,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "IN",
+        "estimated": true
+      },
+      {
+        "rank": 36,
+        "code": "EWR",
+        "name": "纽瓦克",
+        "pax": 47.6,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 37,
+        "code": "LGW",
+        "name": "伦敦盖特威克",
+        "pax": 46.7,
+        "growth": 6.0,
+        "region": "europe",
+        "country": "GB",
+        "estimated": true
+      },
+      {
+        "rank": 38,
+        "code": "SZX",
+        "name": "深圳",
+        "pax": 46.3,
+        "growth": 6.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 39,
+        "code": "CTU",
+        "name": "成都",
+        "pax": 45.8,
+        "growth": 6.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 40,
+        "code": "SFO",
+        "name": "旧金山",
+        "pax": 45.4,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 41,
+        "code": "KUL",
+        "name": "吉隆坡",
+        "pax": 45.1,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "MY",
+        "estimated": true
+      },
+      {
+        "rank": 42,
+        "code": "IAH",
+        "name": "休斯顿",
+        "pax": 44.6,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 43,
+        "code": "XIY",
+        "name": "西安",
+        "pax": 44.3,
+        "growth": 6.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 44,
+        "code": "BOS",
+        "name": "波士顿",
+        "pax": 43.8,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 45,
+        "code": "MSP",
+        "name": "明尼阿波利斯",
+        "pax": 43.4,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 46,
+        "code": "CKG",
+        "name": "重庆",
+        "pax": 42.9,
+        "growth": 6.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 47,
+        "code": "MNL",
+        "name": "马尼拉",
+        "pax": 42.6,
+        "growth": 6.0,
+        "region": "asia",
+        "country": "PH",
+        "estimated": true
+      },
+      {
+        "rank": 48,
+        "code": "DTW",
+        "name": "底特律",
+        "pax": 42.2,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 49,
+        "code": "FLL",
+        "name": "劳德代尔堡",
+        "pax": 41.8,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 50,
+        "code": "GRU",
+        "name": "圣保罗",
+        "pax": 41.2,
+        "growth": 6.0,
+        "region": "americas",
+        "country": "BR",
+        "estimated": true
+      }
+    ],
+    "2026": [
+      {
+        "rank": 1,
+        "code": "ATL",
+        "name": "亚特兰大",
+        "pax": 117.3,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 2,
+        "code": "DXB",
+        "name": "迪拜",
+        "pax": 97.4,
+        "growth": 12.0,
+        "region": "middle-east",
+        "country": "AE",
+        "estimated": true
+      },
+      {
+        "rank": 3,
+        "code": "DFW",
+        "name": "达拉斯",
+        "pax": 91.6,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 4,
+        "code": "LHR",
+        "name": "伦敦希思罗",
+        "pax": 88.7,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "GB",
+        "estimated": true
+      },
+      {
+        "rank": 5,
+        "code": "DEN",
+        "name": "丹佛",
+        "pax": 87.1,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 6,
+        "code": "ORD",
+        "name": "芝加哥",
+        "pax": 86.2,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 7,
+        "code": "IST",
+        "name": "伊斯坦布尔",
+        "pax": 85.1,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "TR",
+        "estimated": true
+      },
+      {
+        "rank": 8,
+        "code": "LAX",
+        "name": "洛杉矶",
+        "pax": 84.1,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 9,
+        "code": "CDG",
+        "name": "巴黎戴高乐",
+        "pax": 75.5,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "FR",
+        "estimated": true
+      },
+      {
+        "rank": 10,
+        "code": "DEL",
+        "name": "新德里",
+        "pax": 74.8,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "IN",
+        "estimated": true
+      },
+      {
+        "rank": 11,
+        "code": "HND",
+        "name": "东京羽田",
+        "pax": 72.0,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "JP",
+        "estimated": true
+      },
+      {
+        "rank": 12,
+        "code": "AMS",
+        "name": "阿姆斯特丹",
+        "pax": 69.2,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "NL",
+        "estimated": true
+      },
+      {
+        "rank": 13,
+        "code": "HKG",
+        "name": "香港",
+        "pax": 68.8,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "HK",
+        "estimated": true
+      },
+      {
+        "rank": 14,
+        "code": "MAD",
+        "name": "马德里",
+        "pax": 67.3,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "ES",
+        "estimated": true
+      },
+      {
+        "rank": 15,
+        "code": "PEK",
+        "name": "北京首都",
+        "pax": 67.2,
+        "growth": 12.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 16,
+        "code": "JFK",
+        "name": "纽约肯尼迪",
+        "pax": 67.0,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 17,
+        "code": "ICN",
+        "name": "首尔仁川",
+        "pax": 63.1,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "KR",
+        "estimated": true
+      },
+      {
+        "rank": 18,
+        "code": "SIN",
+        "name": "新加坡樟宜",
+        "pax": 61.8,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "SG",
+        "estimated": true
+      },
+      {
+        "rank": 19,
+        "code": "BKK",
+        "name": "曼谷",
+        "pax": 61.3,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "TH",
+        "estimated": true
+      },
+      {
+        "rank": 20,
+        "code": "FRA",
+        "name": "法兰克福",
+        "pax": 61.0,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "DE",
+        "estimated": true
+      },
+      {
+        "rank": 21,
+        "code": "MCO",
+        "name": "奥兰多",
+        "pax": 60.3,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 22,
+        "code": "LAS",
+        "name": "拉斯维加斯",
+        "pax": 59.5,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 23,
+        "code": "CAN",
+        "name": "广州",
+        "pax": 58.7,
+        "growth": 12.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 24,
+        "code": "MIA",
+        "name": "迈阿密",
+        "pax": 57.5,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 25,
+        "code": "CLT",
+        "name": "夏洛特",
+        "pax": 56.2,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 26,
+        "code": "CGK",
+        "name": "雅加达",
+        "pax": 55.9,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "ID",
+        "estimated": true
+      },
+      {
+        "rank": 27,
+        "code": "BCN",
+        "name": "巴塞罗那",
+        "pax": 55.6,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "ES",
+        "estimated": true
+      },
+      {
+        "rank": 28,
+        "code": "PHX",
+        "name": "凤凰城",
+        "pax": 54.8,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 29,
+        "code": "MUC",
+        "name": "慕尼黑",
+        "pax": 54.0,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "DE",
+        "estimated": true
+      },
+      {
+        "rank": 30,
+        "code": "SEA",
+        "name": "西雅图",
+        "pax": 53.2,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 31,
+        "code": "SHA",
+        "name": "上海虹桥",
+        "pax": 52.9,
+        "growth": 12.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 32,
+        "code": "FCO",
+        "name": "罗马",
+        "pax": 52.3,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "IT",
+        "estimated": true
+      },
+      {
+        "rank": 33,
+        "code": "PVG",
+        "name": "上海浦东",
+        "pax": 51.4,
+        "growth": 12.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 34,
+        "code": "MEX",
+        "name": "墨西哥城",
+        "pax": 51.0,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "MX",
+        "estimated": true
+      },
+      {
+        "rank": 35,
+        "code": "BOM",
+        "name": "孟买",
+        "pax": 50.6,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "IN",
+        "estimated": true
+      },
+      {
+        "rank": 36,
+        "code": "EWR",
+        "name": "纽瓦克",
+        "pax": 50.3,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 37,
+        "code": "LGW",
+        "name": "伦敦盖特威克",
+        "pax": 49.4,
+        "growth": 12.0,
+        "region": "europe",
+        "country": "GB",
+        "estimated": true
+      },
+      {
+        "rank": 38,
+        "code": "SZX",
+        "name": "深圳",
+        "pax": 48.9,
+        "growth": 12.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 39,
+        "code": "CTU",
+        "name": "成都",
+        "pax": 48.4,
+        "growth": 12.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 40,
+        "code": "SFO",
+        "name": "旧金山",
+        "pax": 47.9,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 41,
+        "code": "KUL",
+        "name": "吉隆坡",
+        "pax": 47.6,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "MY",
+        "estimated": true
+      },
+      {
+        "rank": 42,
+        "code": "IAH",
+        "name": "休斯顿",
+        "pax": 47.2,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 43,
+        "code": "XIY",
+        "name": "西安",
+        "pax": 46.8,
+        "growth": 12.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 44,
+        "code": "BOS",
+        "name": "波士顿",
+        "pax": 46.3,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 45,
+        "code": "MSP",
+        "name": "明尼阿波利斯",
+        "pax": 45.8,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 46,
+        "code": "CKG",
+        "name": "重庆",
+        "pax": 45.4,
+        "growth": 12.0,
+        "region": "china",
+        "country": "CN",
+        "estimated": true
+      },
+      {
+        "rank": 47,
+        "code": "MNL",
+        "name": "马尼拉",
+        "pax": 45.0,
+        "growth": 12.0,
+        "region": "asia",
+        "country": "PH",
+        "estimated": true
+      },
+      {
+        "rank": 48,
+        "code": "DTW",
+        "name": "底特律",
+        "pax": 44.6,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 49,
+        "code": "FLL",
+        "name": "劳德代尔堡",
+        "pax": 44.1,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "US",
+        "estimated": true
+      },
+      {
+        "rank": 50,
+        "code": "GRU",
+        "name": "圣保罗",
+        "pax": 43.6,
+        "growth": 12.0,
+        "region": "americas",
+        "country": "BR",
+        "estimated": true
+      }
+    ]
+  },
+  "validation_results": {
+    "2024": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "total_records": 50,
+        "avg_pax": 54.848,
+        "avg_growth": 26.822,
+        "china_count": 8
+      }
+    },
+    "2025": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "total_records": 50,
+        "avg_pax": 58.141999999999996,
+        "avg_growth": 6.0,
+        "china_count": 8
+      }
+    },
+    "2026": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "total_records": 50,
+        "avg_pax": 61.434,
+        "avg_growth": 12.0,
+        "china_count": 8
+      }
+    }
+  }
+}

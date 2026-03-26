@@ -1,0 +1,71 @@
+name: 每月更新机场数据
+
+# 每月1号凌晨2点（UTC）自动运行 = 北京时间10点
+on:
+  schedule:
+    - cron: '0 2 1 * *'  # 每月1号 02:00 UTC
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  update-airport-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 检出代码
+        uses: actions/checkout@v4
+      
+      - name: 🐍 设置 Python 环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: 📦 创建数据目录
+        run: |
+          mkdir -p data
+      
+      - name: 🛫 执行数据采集与校核
+        id: fetch_data
+        run: |
+          python scripts/fetch_multiyear_data.py
+        continue-on-error: true
+      
+      - name: 📊 检查是否有数据更新
+        id: check_changes
+        run: |
+          if git diff --quiet data/airports_data.json; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "✅ 数据无变化，跳过提交"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "📝 检测到数据更新"
+          fi
+      
+      - name: 💾 提交数据更新
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions Bot"
+          git add data/airports_data.json
+          git commit -m "🛫 自动更新机场数据 - $(date +'%Y-%m-%d') [monthly]"
+          git push
+      
+      - name: 📧 生成更新报告
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          echo "## 📊 数据更新报告" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**更新时间:** $(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**数据年份:** 2024, 2025, 2026" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**下次更新:** 下月1号" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ 数据已成功更新并推送到仓库" >> $GITHUB_STEP_SUMMARY
+      
+      - name: ✅ 完成
+        run: |
+          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+            echo "✅ 数据更新任务完成"
+          else
+            echo "✅ 数据检查完成，无需更新"
+          fi
