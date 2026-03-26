@@ -446,98 +446,75 @@
                     }
                 });
             } else if (currentView === 'rank') {
-                // 排名变化：横轴=机场，纵轴=年份，数据点=排名
-                const years = ['2024', '2025', '2026'];
-                const data2024 = allData.yearly_data['2024'] || [];
+                // 显示排名对比表格
+                document.querySelector('.chart-wrapper').style.display = 'none';
+                let rankTable = document.getElementById('rankTable');
+                if (!rankTable) {
+                    rankTable = document.createElement('div');
+                    rankTable.id = 'rankTable';
+                    rankTable.style.overflowX = 'auto';
+                    document.querySelector('.chart-container').appendChild(rankTable);
+                }
+                rankTable.style.display = 'block';
                 
-                // 按2024年排名排序机场
+                const data2024 = allData.yearly_data['2024'] || [];
+                const data2025 = allData.yearly_data['2025'] || [];
+                const data2026 = allData.yearly_data['2026'] || [];
+                
                 const filteredAirports = currentRegion === 'all'
                     ? data2024.slice(0, currentCount)
                     : data2024.filter(a => a.region === currentRegion).slice(0, currentCount);
                 
-                // 为每年创建一个dataset
-                const datasets = years.map((year, yearIndex) => {
-                    const yearData = allData.yearly_data[year] || [];
+                let tableHTML = `
+                    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 12px; border: 1px solid #ddd; position: sticky; left: 0; background: #f8f9fa; z-index: 1;">机场</th>
+                                <th style="padding: 12px; border: 1px solid #ddd;">2024年</th>
+                                <th style="padding: 12px; border: 1px solid #ddd;">2025年</th>
+                                <th style="padding: 12px; border: 1px solid #ddd;">2026年</th>
+                                <th style="padding: 12px; border: 1px solid #ddd;">变化</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                filteredAirports.forEach(airport2024 => {
+                    const airport2025 = data2025.find(a => a.code === airport2024.code);
+                    const airport2026 = data2026.find(a => a.code === airport2024.code);
                     
-                    return {
-                        label: `${year}年`,
-                        data: filteredAirports.map((airport2024, index) => {
-                            // 找到该机场在当前年份的数据
-                            const airportInYear = yearData.find(a => a.code === airport2024.code);
-                            return {
-                                x: index,  // 横轴位置（按2024年排序）
-                                y: yearIndex,  // 纵轴 = 年份索引
-                                rank: airportInYear ? airportInYear.rank : null,  // 该年的排名
-                                code: airport2024.code,
-                                name: airport2024.name
-                            };
-                        }),
-                        backgroundColor: yearIndex === 0 ? '#B4B2A9' : yearIndex === 1 ? '#85B7EB' : '#378ADD',
-                        pointRadius: 8,
-                        pointHoverRadius: 10
-                    };
+                    const rank2024 = airport2024.rank;
+                    const rank2025 = airport2025 ? airport2025.rank : '-';
+                    const rank2026 = airport2026 ? airport2026.rank : '-';
+                    
+                    const change = airport2026 ? rank2024 - airport2026.rank : 0;
+                    const changeText = change > 0 ? `↑${change}` : change < 0 ? `↓${Math.abs(change)}` : '-';
+                    const changeColor = change > 0 ? '#22c55e' : change < 0 ? '#ef4444' : '#666';
+                    
+                    tableHTML += `
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: 600; position: sticky; left: 0; background: white;">
+                                ${airport2024.code} <span style="color: #666; font-weight: 400;">${airport2024.name}</span>
+                            </td>
+                            <td style="padding: 10px; border: 1px solid #ddd; text-align: center; background: #f8f9fa;">#${rank2024}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">${rank2025 !== '-' ? '#' + rank2025 : '-'}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: 600;">${rank2026 !== '-' ? '#' + rank2026 : '-'}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd; text-align: center; color: ${changeColor}; font-weight: 600;">${changeText}</td>
+                        </tr>
+                    `;
                 });
                 
-                chart = new Chart(ctx, {
-                    type: 'scatter',
-                    data: { datasets },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: true, position: 'top' },
-                            tooltip: {
-                                callbacks: {
-                                    label: ctx => {
-                                        const point = ctx.raw;
-                                        return point.rank 
-                                            ? `${point.code} ${point.name}: 排名 #${point.rank}`
-                                            : `${point.code} ${point.name}: 未进入榜单`;
-                                    },
-                                    title: ctx => years[ctx[0].raw.y]
-                                }
-                            },
-                            title: {
-                                display: true,
-                                text: '三年排名变化（数字 = 排名）',
-                                font: { size: 16 }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                type: 'category',
-                                labels: filteredAirports.map(a => a.code),
-                                title: { display: true, text: '机场（按2024年排名排序）' },
-                                ticks: { autoSkip: false }
-                            },
-                            y: {
-                                type: 'category',
-                                labels: years,
-                                title: { display: true, text: '年份' }
-                            }
-                        },
-                        // 在每个点上显示排名数字
-                        animation: {
-                            onComplete: function() {
-                                const ctx = this.ctx;
-                                this.data.datasets.forEach((dataset, i) => {
-                                    const meta = this.getDatasetMeta(i);
-                                    meta.data.forEach((bar, index) => {
-                                        const data = dataset.data[index];
-                                        if (data.rank) {
-                                            ctx.fillStyle = '#000';
-                                            ctx.font = 'bold 12px Arial';
-                                            ctx.textAlign = 'center';
-                                            ctx.textBaseline = 'middle';
-                                            ctx.fillText(data.rank, bar.x, bar.y);
-                                        }
-                                    });
-                                });
-                            }
-                        }
-                    }
-                });
-            }
+                tableHTML += `
+                        </tbody>
+                    </table>
+                `;
+                
+                rankTable.innerHTML = tableHTML;
+            } else {
+                // 其他视图：显示图表，隐藏表格
+                document.querySelector('.chart-wrapper').style.display = 'block';
+                const rankTable = document.getElementById('rankTable');
+                if (rankTable) rankTable.style.display = 'none';
         }
 
         document.getElementById('yearSelect').addEventListener('change', e => {
