@@ -446,28 +446,54 @@
                     }
                 });
             } else if (currentView === 'rank') {
-                // 排名变化：对比三年数据
+                // 排名变化：追踪每个机场在三年的排名轨迹
                 const datasets = [];
                 const years = ['2024', '2025', '2026'];
-                const colors = ['#B4B2A9', '#85B7EB', '#378ADD'];
                 
-                years.forEach((year, index) => {
+                // 收集所有出现在任一年份Top N的机场
+                const allAirports = new Set();
+                years.forEach(year => {
                     const yearData = allData.yearly_data[year] || [];
-                    const filteredYearData = currentRegion === 'all' 
+                    const filteredData = currentRegion === 'all' 
                         ? yearData.slice(0, currentCount)
                         : yearData.filter(a => a.region === currentRegion).slice(0, currentCount);
+                    filteredData.forEach(a => allAirports.add(a.code));
+                });
+                
+                // 为每个机场创建一条轨迹线
+                allAirports.forEach(code => {
+                    const airportData = [];
+                    let airportName = '';
+                    let airportRegion = '';
                     
-                    datasets.push({
-                        label: `${year}年`,
-                        data: filteredYearData.map(a => ({
-                            x: a.rank,
-                            y: a.pax,
-                            airport: a.name
-                        })),
-                        backgroundColor: colors[index],
-                        pointRadius: 6,
-                        pointHoverRadius: 8
+                    years.forEach(year => {
+                        const yearData = allData.yearly_data[year] || [];
+                        const airport = yearData.find(a => a.code === code);
+                        
+                        if (airport) {
+                            airportName = airport.name;
+                            airportRegion = airport.region;
+                            airportData.push({
+                                x: airport.rank,
+                                y: airport.pax,
+                                year: year
+                            });
+                        }
                     });
+                    
+                    // 只显示至少在一年出现在Top N的机场
+                    if (airportData.length > 0) {
+                        datasets.push({
+                            label: `${code} ${airportName}`,
+                            data: airportData,
+                            backgroundColor: regionColors[airportRegion] || '#888',
+                            borderColor: regionColors[airportRegion] || '#888',
+                            showLine: true,  // 连接各年的点
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            borderWidth: 2
+                        });
+                    }
                 });
                 
                 chart = new Chart(ctx, {
@@ -477,22 +503,27 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: true, position: 'top' },
+                            legend: { 
+                                display: false  // 太多机场，不显示图例
+                            },
                             tooltip: {
                                 callbacks: {
-                                    label: ctx => `#${ctx.raw.x}: ${ctx.raw.airport} (${ctx.raw.y.toFixed(1)}M)`
+                                    label: ctx => {
+                                        const point = ctx.raw;
+                                        return `${ctx.dataset.label}: #${point.x} (${point.y.toFixed(1)}M) - ${point.year}年`;
+                                    }
                                 }
                             },
                             title: {
                                 display: true,
-                                text: '三年排名变化趋势',
+                                text: '三年排名变化趋势（每条线 = 一个机场的轨迹）',
                                 font: { size: 16 }
                             }
                         },
                         scales: {
                             x: {
                                 title: { display: true, text: '排名' },
-                                reverse: false,
+                                reverse: true,  // 排名越小越好，所以反转X轴
                                 min: 0,
                                 max: currentCount + 1
                             },
