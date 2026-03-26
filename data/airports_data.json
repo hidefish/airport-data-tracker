@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-03-26T02:23:27.271104",
+    "generated_at": "2026-03-26T03:09:42.943076",
     "years": [
       2024,
       2025,
@@ -1475,7 +1475,7 @@
       "warnings": [],
       "stats": {
         "total_records": 50,
-        "avg_pax": 54.848,
+        "avg_pax": 54.84800000000001,
         "avg_growth": 26.822,
         "china_count": 8
       }
@@ -1486,7 +1486,7 @@
       "warnings": [],
       "stats": {
         "total_records": 50,
-        "avg_pax": 58.141999999999996,
+        "avg_pax": 58.14200000000001,
         "avg_growth": 6.0,
         "china_count": 8
       }
@@ -1497,7 +1497,7 @@
       "warnings": [],
       "stats": {
         "total_records": 50,
-        "avg_pax": 61.434,
+        "avg_pax": 61.43400000000001,
         "avg_growth": 12.0,
         "china_count": 8
       }
