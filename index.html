@@ -365,6 +365,12 @@
             
             const ctx = document.getElementById('mainChart');
             
+            // 隐藏表格，显示图表
+            const chartWrapper = document.querySelector('.chart-wrapper');
+            const rankTable = document.getElementById('rankTable');
+            if (rankTable) rankTable.style.display = 'none';
+            if (chartWrapper) chartWrapper.style.display = 'block';
+            
             if (currentView === 'bar') {
                 chart = new Chart(ctx, {
                     type: 'bar',
@@ -400,7 +406,6 @@
                     }
                 });
             } else if (currentView === 'bubble') {
-                // 气泡图：气泡大小代表增长率
                 chart = new Chart(ctx, {
                     type: 'bubble',
                     data: {
@@ -408,7 +413,7 @@
                             data: data.map((a, i) => ({
                                 x: i + 1,
                                 y: a.pax,
-                                r: Math.max(5, Math.abs(a.growth || 0) / 3), // 气泡大小 = 增长率
+                                r: Math.max(5, Math.abs(a.growth || 0) / 3),
                                 airport: a.name,
                                 growth: a.growth || 0
                             })),
@@ -446,16 +451,18 @@
                     }
                 });
             } else if (currentView === 'rank') {
-                // 显示排名对比表格
-                document.querySelector('.chart-wrapper').style.display = 'none';
-                let rankTable = document.getElementById('rankTable');
+                // 显示表格，隐藏图表
+                if (chartWrapper) chartWrapper.style.display = 'none';
+                
                 if (!rankTable) {
-                    rankTable = document.createElement('div');
-                    rankTable.id = 'rankTable';
-                    rankTable.style.overflowX = 'auto';
-                    document.querySelector('.chart-container').appendChild(rankTable);
+                    const tableDiv = document.createElement('div');
+                    tableDiv.id = 'rankTable';
+                    tableDiv.style.overflowX = 'auto';
+                    document.querySelector('.chart-container').appendChild(tableDiv);
                 }
-                rankTable.style.display = 'block';
+                
+                const rankTableDiv = document.getElementById('rankTable');
+                rankTableDiv.style.display = 'block';
                 
                 const data2024 = allData.yearly_data['2024'] || [];
                 const data2025 = allData.yearly_data['2025'] || [];
@@ -509,14 +516,9 @@
                     </table>
                 `;
                 
-                rankTable.innerHTML = tableHTML;
-            } else {
-                // 其他视图：显示图表，隐藏表格
-                document.querySelector('.chart-wrapper').style.display = 'block';
-                const rankTable = document.getElementById('rankTable');
-                if (rankTable) rankTable.style.display = 'none';
+                rankTableDiv.innerHTML = tableHTML;
+            }
         }
-
         document.getElementById('yearSelect').addEventListener('change', e => {
             currentYear = e.target.value;
             updateMetrics();
