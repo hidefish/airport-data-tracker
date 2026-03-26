@@ -522,13 +522,19 @@
                             y: {
                                 reverse: true,  // #1在顶部
                                 title: { display: true, text: '排名（#1在顶部）' },
-                                min: 0,
-                                max: currentCount + 1,
+                                min: 1,
+                                max: currentCount,
                                 ticks: {
+                                    stepSize: 5,  // 每隔5显示一个刻度
                                     callback: function(value) {
-                                        return value === 0 ? '' : '#' + value;
+                                        // 显示 1, 5, 10, 15, 20...
+                                        if (value === 1 || value % 5 === 0) {
+                                            return '#' + value;
+                                        }
+                                        return '';
                                     }
                                 }
+                            }
                             }
                         }
                     }
